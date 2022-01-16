@@ -28,42 +28,21 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <img src="{{ asset('assets/img/logo.png') }}"
-                                class="w-100 my-3" alt="">
-                            <h4 class="title"><a href="">ISC</a></h4>
-                            <a href="" class="btn btn-orange">Register</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <img src="{{ asset('assets/img/logo.png') }}"
-                                class="w-100 my-3" alt="">
-                            <h4 class="title"><a href="">FIQSI</a></h4>
-                            <a href="" class="btn btn-orange">Register</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <img src="{{ asset('assets/img/logo.png') }}"
-                                class="w-100 my-3" alt="">
-                            <h4 class="title"><a href="">OSIRIS</a></h4>
-                            <a href="" class="btn btn-orange">Register</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <img src="{{ asset('assets/img/logo.png') }}"
-                                class="w-100 my-3" alt="">
-                            <h4 class="title"><a href="">GATRA</a></h4>
-                            <a href="" class="btn btn-orange">Register</a>
-                        </div>
-                    </div>
+                    @if ($data->kategori)
+                        @foreach ($data->kategori as $item)
+                            <div class="col-lg-3 col-md-6" data-aos="fade-up">
+                                <div class="icon-box">
+                                    <div class="icon"><i class="bi bi-card-checklist"></i></div>
+                                    <img src="{{ $item->logo ? $item->logo : asset('assets/img/logo.png') }}"
+                                        class="w-100 my-3" height="300" alt="">
+                                    <h4 class="title"><a href="{{ $item->link_registrasi }}"
+                                            target="_blank">{{ $item->judul_singkat }}</a></h4>
+                                    <a href="{{ $item->link_registrasi }}" target="_blank" class="btn btn-orange">Lihat
+                                        Registrasi</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </section><!-- End Services Section -->

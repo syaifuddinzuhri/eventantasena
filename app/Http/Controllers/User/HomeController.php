@@ -27,8 +27,10 @@ class HomeController extends Controller
     public function registrasi()
     {
         $profil = Profil::first();
+        $kategori = KategoriLomba::get();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'kategori' => $kategori
         ];
         return view('user.registrasi', compact('data'));
     }
@@ -63,8 +65,10 @@ class HomeController extends Controller
     public function berkas()
     {
         $profil = Profil::first();
+        $kategori = KategoriLomba::get();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'kategori' => $kategori
         ];
         return view('user.berkas', compact('data'));
     }
@@ -72,8 +76,10 @@ class HomeController extends Controller
     public function fiqsi()
     {
         $profil = Profil::first();
+        $fiqsi = KategoriLomba::with('cabangs')->where('type', 'fiqsi')->first();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'fiqsi' => $fiqsi
         ];
         return view('user.events.fiqsi', compact('data'));
     }
@@ -81,8 +87,10 @@ class HomeController extends Controller
     public function isc()
     {
         $profil = Profil::first();
+        $isc = KategoriLomba::with('cabangs')->where('type', 'isc')->first();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'isc' => $isc
         ];
         return view('user.events.isc', compact('data'));
     }
@@ -90,8 +98,10 @@ class HomeController extends Controller
     public function gatra()
     {
         $profil = Profil::first();
+        $gatra = KategoriLomba::with('cabangs')->where('type', 'gatra')->first();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'gatra' => $gatra
         ];
         return view('user.events.gatra', compact('data'));
     }
@@ -99,8 +109,10 @@ class HomeController extends Controller
     public function osiris()
     {
         $profil = Profil::first();
+        $osiris = KategoriLomba::with('cabangs')->where('type', 'osiris')->first();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'osiris' => $osiris
         ];
         return view('user.events.osiris', compact('data'));
     }

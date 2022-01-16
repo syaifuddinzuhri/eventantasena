@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Constant\GlobalConstant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\URL;
 
 class KategoriLomba extends Model
@@ -48,5 +49,15 @@ class KategoriLomba extends Model
     public function getMaskotAttribute()
     {
         return $this->attributes['maskot'] ?  URL::to('/') . '/' . $this->attributes['maskot'] : null;
+    }
+
+    /**
+     * Get all of the cabangs for the KategoriLomba
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cabangs(): HasMany
+    {
+        return $this->hasMany(CabangLomba::class);
     }
 }
