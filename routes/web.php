@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CabangLombaFiqsiController;
+use App\Http\Controllers\CabangLombaGatraController;
+use App\Http\Controllers\CabangLombaIscController;
+use App\Http\Controllers\CabangLombaOsirisController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriFiqsiController;
 use App\Http\Controllers\KategoriGatraController;
@@ -36,6 +40,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('kategori/fiqsi', KategoriFiqsiController::class);
     Route::resource('kategori/osiris', KategoriOsirisController::class);
     Route::resource('kategori/gatra', KategoriGatraController::class);
+    Route::resource('cabang/isc', CabangLombaIscController::class, [
+        'as' => 'cabang'
+    ]);
+    Route::resource('cabang/fiqsi', CabangLombaFiqsiController::class, [
+        'as' => 'cabang'
+    ]);
+    Route::resource('cabang/osiris', CabangLombaOsirisController::class, [
+        'as' => 'cabang'
+    ]);
+    Route::resource('cabang/gatra', CabangLombaGatraController::class, [
+        'as' => 'cabang'
+    ]);
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('user.home');

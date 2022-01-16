@@ -72,7 +72,7 @@
             <span>Profil ISC</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('cabang.isc.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Cabang Lomba ISC</span></a>
     </li>
@@ -92,7 +92,7 @@
             <span>Profil FIQSI</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('cabang.fiqsi.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Cabang Lomba FIQSI</span></a>
     </li>
@@ -112,7 +112,7 @@
             <span>Profil OSIRIS</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('cabang.osiris.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Cabang Lomba OSIRIS</span></a>
     </li>
@@ -132,7 +132,7 @@
             <span>Profil GATRA</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('cabang.gatra.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Cabang Lomba GATRA</span></a>
     </li>

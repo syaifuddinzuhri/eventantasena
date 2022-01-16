@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Constant\GlobalConstant;
-use App\Models\Partner;
+use App\Models\CabangLomba;
+use App\Models\KategoriLomba;
 use App\Models\Profil;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class PartnerController extends Controller
+class CabangLombaGatraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,10 @@ class PartnerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = cache()->remember('partners', 5, function () {
-                return Partner::get();
+            $data = cache()->remember('cabang-gatra', 5, function () {
+                return CabangLomba::with('kategori')->whereHas('kategori', function($q){
+                    $q->where('type', 'gatra');
+                })->get();
             });
             return DataTables::of($data)
                 ->setRowAttr([
@@ -30,9 +33,9 @@ class PartnerController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
                     $button = '<div class="btn-group" role="group">';
-                    $button .= '<a href="/partner/' . $data->id . '/edit" class="btn btn-sm btn-info">
+                    $button .= '<a href="/cabang/gatra/' . $data->id . '/edit" class="btn btn-sm btn-info">
                         <i class="fa fa-edit" aria-hidden="true"></i> </a>';
-                    $button .= '<a href="javascript:void(0)" data-toggle="modal" data-id="' . $data->id . '" data-target="#delete-partner-modal" class="btn btn-sm btn-danger btn-delete">
+                    $button .= '<a href="javascript:void(0)" data-toggle="modal" data-id="' . $data->id . '" data-target="#delete-cabang-gatra-modal" class="btn btn-sm btn-danger btn-delete">
                                                 <i class="fa fa-trash" aria-hidden="true"></i></a>';
                     $button .= '</div>';
                     return $button;
@@ -42,12 +45,14 @@ class PartnerController extends Controller
         }
 
         $profil = Profil::first();
-        $partners = Partner::get();
+        $gatra = CabangLomba::with('kategori')->whereHas('kategori', function($q){
+            $q->where('type', 'gatra');
+        })->get();
         $data = (object) [
             'profil' => $profil,
-            'partners' => $partners
+            'gatra' => $gatra
         ];
-        return view('admin.partner.index', compact('data'));
+        return view('admin.gatra.cabang.index', compact('data'));
     }
 
     /**
@@ -59,9 +64,9 @@ class PartnerController extends Controller
     {
         $profil = Profil::first();
         $data = (object) [
-            'profil' => $profil,
+            'profil' => $profil
         ];
-        return view('admin.partner.create', compact('data'));
+        return view('admin.gatra.cabang.create', compact('data'));
     }
 
     /**
@@ -72,14 +77,16 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
+        $kategori = KategoriLomba::where('type', 'gatra')->first();
         $payload = $request->all();
         if ($request->hasFile('gambar') || $request->gambar != null) {
             $file = $request->file('gambar');
             $file_name = upload_image($file, GlobalConstant::IMAGE);
             $payload['gambar'] = $file_name;
         }
-        Partner::create($payload);
-        return redirect()->route('partner.index')->with('success', 'Data berhasil ditambahkan');
+        $payload['kategori_lomba_id'] = $kategori->id;
+        CabangLomba::create($payload);
+        return redirect()->route('cabang.gatra.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -102,12 +109,12 @@ class PartnerController extends Controller
     public function edit($id)
     {
         $profil = Profil::first();
-        $partner = Partner::find($id);
+        $gatra = CabangLomba::find($id);
         $data = (object) [
             'profil' => $profil,
-            'partner' => $partner
+            'gatra' => $gatra
         ];
-        return view('admin.partner.edit', compact('data'));
+        return view('admin.gatra.cabang.edit', compact('data'));
     }
 
     /**
@@ -119,7 +126,7 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Partner::find($id);
+        $data = CabangLomba::find($id);
         $payload = $request->all();
         if ($request->hasFile('gambar') || $request->gambar != null) {
             $file = $request->file('gambar');
@@ -127,8 +134,7 @@ class PartnerController extends Controller
             $payload['gambar'] = $file_name;
         }
         $data->update($payload);
-
-        return redirect()->route('partner.index')->with('success', 'Data berhasil diedit');
+        return redirect()->route('cabang.gatra.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -139,8 +145,8 @@ class PartnerController extends Controller
      */
     public function destroy($id)
     {
-        $data = Partner::find($id);
-        $exp = explode('/', $data->logo_favicon);
+        $data = CabangLomba::find($id);
+        $exp = explode('/', $data->gambar);
         unlink_image(GlobalConstant::IMAGE, end($exp));
         $data->delete();
         return response()->json('success');
