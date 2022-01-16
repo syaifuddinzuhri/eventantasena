@@ -12,12 +12,19 @@ class DashboardController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('admin.dashboard', compact('data'));
     }
 
     public function showProfil()
     {
-        $data = Profil::first();
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
         return view('admin.profil', compact('data'));
     }
 
@@ -32,7 +39,7 @@ class DashboardController extends Controller
                 $payload['logo'] = $file_name;
 
                 $exp = explode('/', $data->logo);
-                unlink_image(GlobalConstant::IMAGE, end($exp));
+                // unlink_image(GlobalConstant::IMAGE, end($exp));
             }
             if ($request->hasFile('logo_web') || $request->logo_web != null) {
                 $file = $request->file('logo_web');
@@ -40,7 +47,7 @@ class DashboardController extends Controller
                 $payload['logo_web'] = $file_name;
 
                 $exp = explode('/', $data->logo_web);
-                unlink_image(GlobalConstant::IMAGE, end($exp));
+                // unlink_image(GlobalConstant::IMAGE, end($exp));
             }
             if ($request->hasFile('logo_favicon') || $request->logo_favicon != null) {
                 $file = $request->file('logo_favicon');
@@ -48,7 +55,7 @@ class DashboardController extends Controller
                 $payload['logo_favicon'] = $file_name;
 
                 $exp = explode('/', $data->logo_favicon);
-                unlink_image(GlobalConstant::IMAGE, end($exp));
+                // unlink_image(GlobalConstant::IMAGE, end($exp));
             }
             $data->update($payload);
         } else {

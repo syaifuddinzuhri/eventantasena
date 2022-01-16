@@ -6,10 +6,9 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <img src="{{ asset('assets/img/logo.png') }}"
-                        width="210" alt="">
+                    <img src="{{ $data->profil->logo_web ? $data->profil->logo_web : asset('assets/img/image.png')}}" width="210" alt="">
                     <p class="mt-4">
-                        ANTASENA adalah salah satu program unggulan SMA Unggulan Berbasis Pesantren Amanatul Ummah
+                        {{ $data->profil->deskripsi_footer }}
                     </p>
                 </div>
 
@@ -33,7 +32,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-newsletter">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="" class="w-100">
+                    <img src="{{ $data->profil->logo_web ? $data->profil->logo_web : asset('assets/img/image.png') }}" alt="" class="w-100">
                 </div>
 
             </div>

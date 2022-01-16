@@ -19,8 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/admin')}}/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
-
+    <link rel="shortcut icon" href="{{ $data->profil->logo_favicon }}" type="image/x-icon">
+    @yield('css')
 </head>
 
 <body id="page-top">

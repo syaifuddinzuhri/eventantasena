@@ -3,57 +3,105 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriLomba;
+use App\Models\Partner;
+use App\Models\Profil;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     public function home()
     {
-        return view('user.home');
+        $profil = Profil::first();
+        $partners = Partner::get();
+        $kategori = KategoriLomba::get();
+        $data = (object) [
+            'profil' => $profil,
+            'partners' => $partners,
+            'kategori' => $kategori,
+        ];
+        return view('user.home', compact('data'));
     }
 
     public function registrasi()
     {
-        return view('user.registrasi');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.registrasi', compact('data'));
     }
 
     public function kontak()
     {
-        return view('user.kontak');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.kontak', compact('data'));
     }
 
     public function jadwal()
     {
-        return view('user.jadwal');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.jadwal', compact('data'));
     }
 
     public function galeri()
     {
-        return view('user.galeri');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.galeri', compact('data'));
     }
 
     public function berkas()
     {
-        return view('user.berkas');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.berkas', compact('data'));
     }
 
     public function fiqsi()
     {
-        return view('user.events.fiqsi');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.events.fiqsi', compact('data'));
     }
 
     public function isc()
     {
-        return view('user.events.isc');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.events.isc', compact('data'));
     }
 
     public function gatra()
     {
-        return view('user.events.gatra');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.events.gatra', compact('data'));
     }
 
     public function osiris()
     {
-        return view('user.events.osiris');
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil
+        ];
+        return view('user.events.osiris', compact('data'));
     }
 }

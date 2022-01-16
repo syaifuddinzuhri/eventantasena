@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriFiqsiController;
+use App\Http\Controllers\KategoriGatraController;
+use App\Http\Controllers\KategoriIscController;
+use App\Http\Controllers\KategoriOsirisController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +31,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('profil', [DashboardController::class, 'showProfil'])->name('show.profil');
     Route::post('profil/save', [DashboardController::class, 'saveProfil'])->name('save.profil');
+    Route::resource('partner', PartnerController::class);
+    Route::resource('kategori/isc', KategoriIscController::class);
+    Route::resource('kategori/fiqsi', KategoriFiqsiController::class);
+    Route::resource('kategori/osiris', KategoriOsirisController::class);
+    Route::resource('kategori/gatra', KategoriGatraController::class);
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('user.home');

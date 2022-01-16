@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label for="judul">Judul</label>
                                 <input type="text" id="judul" class="form-control" name="judul"
-                                    value="{{ $data ? ($data->judul ? $data->judul : '') : '' }}">
+                                    value="{{ $data->profil ? ($data->profil->judul ? $data->profil->judul : '') : '' }}">
                                 @error('judul')
                                     <small class="text-danger mt-1">{{ $message }}</small>
                                 @enderror
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label for="tema">Tema</label>
                                 <input type="text" id="tema" class="form-control" name="tema"
-                                    value="{{ $data ? ($data->tema ? $data->tema : '') : '' }}">
+                                    value="{{ $data->profil ? ($data->profil->tema ? $data->profil->tema : '') : '' }}">
                                 @error('tema')
                                     <small class="text-danger mt-1">{{ $message }}</small>
                                 @enderror
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi Kegiatan</label>
                                 <textarea id="deskripsi" class="form-control" name="deskripsi"
-                                    rows="10">{{ $data ? ($data->deskripsi ? $data->deskripsi : '') : '' }}</textarea>
+                                    rows="10">{{ $data->profil ? ($data->profil->deskripsi ? $data->profil->deskripsi : '') : '' }}</textarea>
                                 @error('deskripsi')
                                     <small class="text-danger mt-1">{{ $message }}</small>
                                 @enderror
@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label for="start">Tanggal Mulai</label>
                                         <input type="date" id="start" class="form-control" name="start"
-                                            value="{{ $data ? ($data->start ? \Carbon\Carbon::parse($data->start)->format('Y-m-d') : '') : '' }}">
+                                            value="{{ $data->profil ? ($data->profil->start ? \Carbon\Carbon::parse($data->profil->start)->format('Y-m-d') : '') : '' }}">
                                         @error('start')
                                             <small class="text-danger mt-1">{{ $message }}</small>
                                         @enderror
@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label for="end">Tanggal Selesai</label>
                                         <input type="date" id="end" class="form-control" name="end"
-                                            value="{{ $data ? ($data->end ? \Carbon\Carbon::parse($data->end)->format('Y-m-d') : '') : '' }}">
+                                            value="{{ $data->profil ? ($data->profil->end ? \Carbon\Carbon::parse($data->profil->end)->format('Y-m-d') : '') : '' }}">
                                         @error('end')
                                             <small class="text-danger mt-1">{{ $message }}</small>
                                         @enderror
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi Footer</label>
                                 <textarea id="deskripsi" class="form-control" name="deskripsi_footer"
-                                    rows="5">{{ $data ? ($data->deskripsi_footer ? $data->deskripsi_footer : '') : '' }}</textarea>
+                                    rows="5">{{ $data->profil ? ($data->profil->deskripsi_footer ? $data->profil->deskripsi_footer : '') : '' }}</textarea>
                                 @error('deskripsi_footer')
                                     <small class="text-danger mt-1">{{ $message }}</small>
                                 @enderror
@@ -88,7 +88,7 @@
                                 <div class="col-md-6 mb-3">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{ $data ? $data->logo ? $data->logo : '' : '' }}" class="img-thumbnail w-100" alt="">
+                                            <img src="{{ $data->profil ? $data->profil->logo ? $data->profil->logo : '' : '' }}" class="img-thumbnail w-100" alt="">
                                         </div>
                                         <div class="col-9">
                                             <div class="form-group">
@@ -104,7 +104,7 @@
                                 <div class="col-md-6 mb-3">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{ $data ? $data->logo_favicon ? $data->logo_favicon : '' : '' }}" class="img-thumbnail w-100" alt="">
+                                            <img src="{{ $data->profil ? $data->profil->logo_favicon ? $data->profil->logo_favicon : '' : '' }}" class="img-thumbnail w-100" alt="">
                                         </div>
                                         <div class="col-9">
                                             <div class="form-group">
@@ -121,7 +121,7 @@
                                 <div class="col-md-6 mb-3">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{ $data ? $data->logo_web ? $data->logo_web : '' : '' }}" class="img-thumbnail w-100" alt="">
+                                            <img src="{{ $data->profil ? $data->profil->logo_web ? $data->profil->logo_web : '' : '' }}" class="img-thumbnail w-100" alt="">
                                         </div>
                                         <div class="col-9">
                                             <div class="form-group">

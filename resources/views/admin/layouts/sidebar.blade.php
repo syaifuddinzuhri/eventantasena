@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-            <img src="{{ asset('assets/img/logo.png') }}" width="25" alt="">
+            <img src="{{ $data->profil->logo_favicon }}" width="25" alt="">
         </div>
         <div class="sidebar-brand-text mx-3">ADMINISTRATOR</div>
     </a>
@@ -28,7 +28,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('partner.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Partner</span></a>
     </li>
@@ -67,7 +67,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('isc.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Profil ISC</span></a>
     </li>
@@ -87,7 +87,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('fiqsi.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Profil FIQSI</span></a>
     </li>
@@ -107,12 +107,12 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('osiris.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Profil OSIRIS</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-table"></i>
             <span>Cabang Lomba OSIRIS</span></a>
     </li>
@@ -127,12 +127,12 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('gatra.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Profil GATRA</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-table"></i>
             <span>Cabang Lomba GATRA</span></a>
     </li>
