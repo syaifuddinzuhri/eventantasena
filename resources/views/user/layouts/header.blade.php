@@ -74,7 +74,7 @@
                             <li><a href="{{route('user.isc')}}">ISC</a></li>
                             <li><a href="{{route('user.fiqsi')}}">FIQSI</a></li>
                             <li><a href="{{route('user.osiris')}}">OSIRIS</a></li>
-                            <li><a href="{{route('user.gatra')}}">GATRA</a></li>
+                            <li><a href="{{route('user.gatra')}}">GATRA <button type="button" class="btn btn-sm btn-danger">NEW</button></a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link text-white" href="{{route('user.berkas')}}">Berkas</a></li>
