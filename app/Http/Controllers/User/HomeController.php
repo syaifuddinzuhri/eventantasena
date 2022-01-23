@@ -57,7 +57,7 @@ class HomeController extends Controller
     {
         $kontak = Kontak::first();
         $profil = Profil::first();
-        $jadwals = Jadwal::with('kategori_lomba')->latest()->get();
+        $jadwals = Jadwal::with('kategori_lomba')->orderBy('created_at', 'asc')->get();
         $data = (object) [
             'kontak' => $kontak,
             'profil' => $profil,
