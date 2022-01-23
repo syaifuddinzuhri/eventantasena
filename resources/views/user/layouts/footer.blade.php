@@ -6,33 +6,33 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <img src="{{ $data->profil->logo_web ? $data->profil->logo_web : asset('assets/img/image.png')}}" width="210" alt="">
+                    <img src="{{ $data->profil ? $data->profil->logo_web : asset('assets/img/image.png')}}" width="210" alt="">
                     <p class="mt-4">
-                        {{ $data->profil->deskripsi_footer }}
+                        {{ $data->profil ? Str::limit($data->profil->deskripsi_footer, 200, '...') : null }}
                     </p>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Informasi</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Komplek PP. Amanatul Ummah, Jl. Raya KH.
-                                Abdul Chalim No.1, Paras, Kembangbelor, Kec. Pacet, Mojokerto, Jawa Timur</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">antasenasmaubp@gmail.com</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->alamat : ''}}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->email : ''}}</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Kontak Kami</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">085123456</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">085123456</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">085123456</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">085123456</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->phone : ''}}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->phone_isc : ''}} (ISC)</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->phone_fiqsi : ''}} (FIQSI)</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->phone_gatra : ''}} (GATRA)</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">{{$data->kontak ? $data->kontak->phone_osiris : ''}} (OSIRIS)</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-newsletter">
-                    <img src="{{ $data->profil->logo_web ? $data->profil->logo_web : asset('assets/img/image.png') }}" alt="" class="w-100">
+                    <img src="{{ $data->profil ? $data->profil->logo_web : asset('assets/img/image.png') }}" alt="" class="w-100">
                 </div>
 
             </div>
@@ -48,8 +48,8 @@
         </div>
         <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
             {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> --}}
-            <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="{{$data->kontak ? $data->kontak->youtube : ''}}" class="youtube"><i class="bx bxl-youtube"></i></a>
+            <a href="{{$data->kontak ? $data->kontak->ig : ''}}" class="instagram"><i class="bx bxl-instagram"></i></a>
             {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
             {{-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> --}}
         </div>

@@ -6,11 +6,14 @@ use App\Http\Controllers\CabangLombaGatraController;
 use App\Http\Controllers\CabangLombaIscController;
 use App\Http\Controllers\CabangLombaOsirisController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KategoriFiqsiController;
 use App\Http\Controllers\KategoriGatraController;
 use App\Http\Controllers\KategoriIscController;
 use App\Http\Controllers\KategoriOsirisController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +38,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('profil', [DashboardController::class, 'showProfil'])->name('show.profil');
     Route::post('profil/save', [DashboardController::class, 'saveProfil'])->name('save.profil');
+    Route::get('admin/kontak', [DashboardController::class, 'showKontak'])->name('admin.show.kontak');
+    Route::put('admin/update/jadwal/{id}', [JadwalController::class, 'update'])->name('admin.update.jadwal');
+    Route::post('admin/kontak/save', [DashboardController::class, 'saveKontak'])->name('admin.save.kontak');
     Route::resource('partner', PartnerController::class);
+    Route::resource('sponsor', SponsorController::class);
+    Route::resource('galeri', GaleriController::class);
+    Route::resource('jadwal', JadwalController::class);
     Route::resource('kategori/isc', KategoriIscController::class);
     Route::resource('kategori/fiqsi', KategoriFiqsiController::class);
     Route::resource('kategori/osiris', KategoriOsirisController::class);
@@ -56,8 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/', [HomeController::class, 'home'])->name('user.home');
 Route::get('/berkas', [HomeController::class, 'berkas'])->name('user.berkas');
-Route::get('/galeri', [HomeController::class, 'galeri'])->name('user.galeri');
-Route::get('/jadwal', [HomeController::class, 'jadwal'])->name('user.jadwal');
+Route::get('/user/galeri', [HomeController::class, 'galeri'])->name('user.galeri');
+Route::get('/user/jadwal', [HomeController::class, 'jadwal'])->name('user.jadwal');
 Route::get('/registrasi', [HomeController::class, 'registrasi'])->name('user.registrasi');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('user.kontak');
 Route::get('/fiqsi', [HomeController::class, 'fiqsi'])->name('user.fiqsi');

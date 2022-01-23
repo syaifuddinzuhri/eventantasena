@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Constant\GlobalConstant;
+use App\Models\Kontak;
 use App\Models\Partner;
 use App\Models\Profil;
 use Illuminate\Http\Request;
@@ -26,6 +27,17 @@ class DashboardController extends Controller
             'profil' => $profil
         ];
         return view('admin.profil', compact('data'));
+    }
+
+    public function showKontak()
+    {
+        $kontak = Kontak::first();
+        $profil = Profil::first();
+        $data = (object) [
+            'profil' => $profil,
+            'kontak' => $kontak
+        ];
+        return view('admin.kontak', compact('data'));
     }
 
     public function saveProfil(Request $request)
@@ -78,5 +90,17 @@ class DashboardController extends Controller
         }
 
         return redirect()->back()->with('success', 'Data profil berhasil disimpan');
+    }
+
+    public function saveKontak(Request $request)
+    {
+        $payload = $request->all();
+        $data = Kontak::first();
+        if($data){
+            $data->update($payload);
+        } else {
+            Kontak::create($payload);
+        }
+        return redirect()->back()->with('success', 'Data kontak berhasil disimpan');
     }
 }

@@ -16,8 +16,8 @@
     <title>@yield('title')</title>
 
     <!-- Favicons -->
-    <link href="{{ $data->profil->logo_favicon ? $data->profil->logo_favicon : asset('assets/img/image.png') }}" rel="icon">
-    <link href="{{ $data->profil->logo_favicon ? $data->profil->logo_favicon : asset('assets/img/image.png')}}" rel="apple-touch-icon">
+    <link href="{{ $data->profil ? $data->profil->logo_favicon : asset('assets/img/image.png') }}" rel="icon">
+    <link href="{{ $data->profil ? $data->profil->logo_favicon : asset('assets/img/image.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -63,7 +63,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <a href="{{route('user.home')}}"><img
-                    src="{{ $data->profil->logo_web ? $data->profil->logo_web : asset('assets/img/image.png') }}"
+                    src="{{ $data->profil ? $data->profil->logo_web : asset('assets/img/image.png') }}"
                     height="70" width="210" alt=""></a>
 
             <nav id="navbar" class="navbar">

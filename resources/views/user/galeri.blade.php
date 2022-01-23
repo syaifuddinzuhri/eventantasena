@@ -24,42 +24,27 @@
 
                 <div class="section-title">
                     <h2 data-aos="fade-up">Galeri Kegiatan</h2>
-                    <p data-aos="fade-up">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
+                    {{-- <p data-aos="fade-up">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
                         eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                        suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
                 </div>
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    @if ($data->galeris)
 
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="{{ asset('assets/users') }}/assets/img/portfolio/portfolio-1.jpg" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <p>App</p>
-                            <a href="{{ asset('assets/users') }}/assets/img/portfolio/portfolio-1.jpg"
-                                class="portfolio-lightbox preview-link" title="App 1"><i class="bi bi-eye"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="{{ asset('assets/users') }}/assets/img/portfolio/portfolio-2.jpg" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <p>Web</p>
-                            <a href="{{ asset('assets/users') }}/assets/img/portfolio/portfolio-2.jpg"
-                                class="portfolio-lightbox preview-link" title="Web 3"><i class="bi bi-eye"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="{{ asset('assets/users') }}/assets/img/portfolio/portfolio-3.jpg" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <p>App</p>
-                            <a href="{{ asset('assets/users') }}/assets/img/portfolio/portfolio-3.jpg"
-                                class="portfolio-lightbox preview-link" title="App 2"><i class="bi bi-eye"></i></a>
-                        </div>
-                    </div>
+                        @foreach ($data->galeris as $item)
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                                <img src="{{ $item->gambar }}"
+                                    class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <p>App</p>
+                                    <a href="{{ $item->gambar }}"
+                                        class="portfolio-lightbox preview-link" title="App 1"><i
+                                            class="bi bi-eye"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
 
                 </div>
 

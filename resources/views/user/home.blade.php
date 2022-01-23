@@ -7,12 +7,12 @@
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center"
         style="background-image: url({{ asset('assets/img/hero.png') }});">
         <div class="container" data-aos="fade-in">
-            <h1 class="text-uppercase">{{ $data->profil->judul }}</h1>
-            <h2>"{{ $data->profil->deskripsi }}"</h2>
+            <h1 class="text-uppercase">{{ $data->profil ? $data->profil->judul : null }}</h1>
+            <h2>"{{ $data->profil ? $data->profil->deskripsi : null }}"</h2>
             <div class="d-flex align-items-center">
                 <i class="bx bxs-calendar get-started-icon"></i>
-                <a href="#about" class="btn-get-started scrollto">{{ date('d M Y', strtotime($data->profil->start)) }} -
-                    {{ date('d M Y', strtotime($data->profil->end)) }}</a>
+                <a href="#about" class="btn-get-started scrollto">{{ date('d M Y', strtotime($data->profil ? $data->profil->start : null)) }} -
+                    {{ date('d M Y', strtotime($data->profil ? $data->profil->end : null)) }}</a>
             </div>
         </div>
     </section>
@@ -58,14 +58,14 @@
                 <div class="row">
                     <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch position-relative"
                         data-aos="fade-right">
-                        <img src="{{ $data->profil->logo ? $data->profil->logo : asset('assets/img/image.png') }}" class="w-50" alt="">
+                        <img src="{{ $data->profil ? $data->profil->logo : null ? $data->profil ? $data->profil->logo : null : asset('assets/img/image.png') }}" class="w-50" alt="">
                     </div>
 
                     <div
                         class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
                         <h4 data-aos="fade-up">Seputar Antasena</h4>
-                        <h3 data-aos="fade-up">{{ $data->profil->judul }}</h3>
-                        <p data-aos="fade-up">{{ $data->profil->deskripsi }}</p>
+                        <h3 data-aos="fade-up">{{ $data->profil ? $data->profil->judul : null }}</h3>
+                        <p data-aos="fade-up">{{ $data->profil ? $data->profil->deskripsi : null }}</p>
                     </div>
                 </div>
 

@@ -32,21 +32,21 @@
                         <div class="info-box">
                             <i class="bx bx-envelope"></i>
                             <h3>Email</h3>
-                            <p>info@example.com</p>
+                            <p>{{$data->kontak ? $data->kontak->email : ''}}</p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 mt-4" data-aos="fade-up">
                         <div class="info-box">
                             <i class="bx bx-map"></i>
                             <h3>Alamat Kami</h3>
-                            <p>A108 Adam Street, New York, NY 535022</p>
+                            <p>{{$data->kontak ? $data->kontak->alamat : ''}}</p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 mt-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="info-box">
                             <i class="bx bx-phone-call"></i>
                             <h3>No. WhatsApp</h3>
-                            <p>+1 5589 55488 55</p>
+                            <p>{{$data->kontak ? $data->kontak->whatsapp : ''}}</p>
                         </div>
                     </div>
                 </div>

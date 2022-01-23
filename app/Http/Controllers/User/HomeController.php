@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Galeri;
 use App\Models\KategoriLomba;
+use App\Models\Kontak;
 use App\Models\Partner;
 use App\Models\Profil;
 use Illuminate\Http\Request;
@@ -14,22 +16,26 @@ class HomeController extends Controller
     public function home()
     {
         $profil = Profil::first();
+        $kontak = Kontak::first();
         $partners = Partner::get();
         $kategori = KategoriLomba::get();
         $data = (object) [
             'profil' => $profil,
             'partners' => $partners,
             'kategori' => $kategori,
+            'kontak' => $kontak,
         ];
         return view('user.home', compact('data'));
     }
 
     public function registrasi()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $kategori = KategoriLomba::get();
         $data = (object) [
             'profil' => $profil,
+            'kontak' => $kontak,
             'kategori' => $kategori
         ];
         return view('user.registrasi', compact('data'));
@@ -38,16 +44,20 @@ class HomeController extends Controller
     public function kontak()
     {
         $profil = Profil::first();
+        $kontak = Kontak::first();
         $data = (object) [
-            'profil' => $profil
+            'profil' => $profil,
+            'kontak' => $kontak,
         ];
         return view('user.kontak', compact('data'));
     }
 
     public function jadwal()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $data = (object) [
+            'kontak' => $kontak,
             'profil' => $profil
         ];
         return view('user.jadwal', compact('data'));
@@ -55,18 +65,24 @@ class HomeController extends Controller
 
     public function galeri()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
+        $galeris = Galeri::get();
         $data = (object) [
-            'profil' => $profil
+            'kontak' => $kontak,
+            'profil' => $profil,
+            'galeris' => $galeris
         ];
         return view('user.galeri', compact('data'));
     }
 
     public function berkas()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $kategori = KategoriLomba::get();
         $data = (object) [
+            'kontak' => $kontak,
             'profil' => $profil,
             'kategori' => $kategori
         ];
@@ -75,9 +91,11 @@ class HomeController extends Controller
 
     public function fiqsi()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $fiqsi = KategoriLomba::with('cabangs')->where('type', 'fiqsi')->first();
         $data = (object) [
+            'kontak' => $kontak,
             'profil' => $profil,
             'fiqsi' => $fiqsi
         ];
@@ -86,9 +104,11 @@ class HomeController extends Controller
 
     public function isc()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $isc = KategoriLomba::with('cabangs')->where('type', 'isc')->first();
         $data = (object) [
+            'kontak' => $kontak,
             'profil' => $profil,
             'isc' => $isc
         ];
@@ -97,9 +117,11 @@ class HomeController extends Controller
 
     public function gatra()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $gatra = KategoriLomba::with('cabangs')->where('type', 'gatra')->first();
         $data = (object) [
+            'kontak' => $kontak,
             'profil' => $profil,
             'gatra' => $gatra
         ];
@@ -108,9 +130,11 @@ class HomeController extends Controller
 
     public function osiris()
     {
+        $kontak = Kontak::first();
         $profil = Profil::first();
         $osiris = KategoriLomba::with('cabangs')->where('type', 'osiris')->first();
         $data = (object) [
+            'kontak' => $kontak,
             'profil' => $profil,
             'osiris' => $osiris
         ];

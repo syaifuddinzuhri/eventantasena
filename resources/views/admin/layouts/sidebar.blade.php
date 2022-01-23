@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-            <img src="{{ $data->profil->logo_favicon }}" width="25" alt="">
+            <img src="{{ $data->profil ? $data->profil->logo_favicon : '' }}" width="25" alt="">
         </div>
         <div class="sidebar-brand-text mx-3">ADMINISTRATOR</div>
     </a>
@@ -34,25 +34,25 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('sponsor.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Sponsor</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('galeri.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Galeri</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('jadwal.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Jadwal</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('admin.show.kontak')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Kontak</span></a>
     </li>
