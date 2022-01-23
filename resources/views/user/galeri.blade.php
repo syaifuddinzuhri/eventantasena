@@ -39,7 +39,7 @@
                                 <div class="portfolio-info">
                                     <p>{{$item->nama}}</p>
                                     <a href="{{ $item->gambar }}"
-                                        class="portfolio-lightbox preview-link" title="App 1"><i
+                                        class="portfolio-lightbox preview-link" title="{{$item->nama}}"><i
                                             class="bi bi-eye"></i></a>
                                 </div>
                             </div>
