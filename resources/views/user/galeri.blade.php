@@ -37,7 +37,7 @@
                                 <img src="{{ $item->gambar }}"
                                     class="img-fluid" alt="">
                                 <div class="portfolio-info">
-                                    <p>App</p>
+                                    <p>{{$item->nama}}</p>
                                     <a href="{{ $item->gambar }}"
                                         class="portfolio-lightbox preview-link" title="App 1"><i
                                             class="bi bi-eye"></i></a>
