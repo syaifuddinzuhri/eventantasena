@@ -11,7 +11,9 @@
             <h2>"{{ $data->profil ? $data->profil->deskripsi : null }}"</h2>
             <div class="d-flex align-items-center">
                 <i class="bx bxs-calendar get-started-icon"></i>
-                <a href="#about" class="btn-get-started scrollto">{{ date('d M Y', strtotime($data->profil ? $data->profil->start : null)) }} -
+                <a href="#about"
+                    class="btn-get-started scrollto">{{ date('d M Y', strtotime($data->profil ? $data->profil->start : null)) }}
+                    -
                     {{ date('d M Y', strtotime($data->profil ? $data->profil->end : null)) }}</a>
             </div>
         </div>
@@ -33,12 +35,15 @@
                                         <div class="col-xl-3 d-flex align-items-stretch" data-aos="fade-up"
                                             data-aos-delay="100">
                                             <div class="icon-box mt-4 mt-xl-0">
+                                                @if ($item->judul_singkat == 'GATRA')
+                                                    <button type="button" class="btn btn-sm btn-danger" style="position: absolute; left: 20px; top: 10px">NEW</button>
+                                                @endif
                                                 <img src="{{ $item->logo ? $item->logo : asset('assets/img/image.png') }}"
                                                     width="200" height="200" alt="">
                                                 <h6 class="mt-3">
-                                                    {{ $item->judul_singkat ? $item->judul_singkat : '...' }}</h4>
-                                                    <h4>{{ $item->judul_panjang ? $item->judul_panjang : '...' }}</h4>
-                                                    <p>{{ Str::limit($item->deskripsi, 150, '...') }}</p>
+                                                    {{ $item->judul_singkat ? $item->judul_singkat : '...' }}</h6>
+                                                <h4>{{ $item->judul_panjang ? $item->judul_panjang : '...' }}</h4>
+                                                <p>{{ Str::limit($item->deskripsi, 150, '...') }}</p>
                                             </div>
                                         </div>
                                     @endforeach
@@ -58,7 +63,8 @@
                 <div class="row">
                     <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch position-relative"
                         data-aos="fade-right">
-                        <img src="{{ $data->profil ? $data->profil->logo : null ? $data->profil ? $data->profil->logo : null : asset('assets/img/image.png') }}" class="w-50" alt="">
+                        <img src="{{ ($data->profil ? $data->profil->logo : null) ? ($data->profil ? $data->profil->logo : null) : asset('assets/img/image.png') }}"
+                            class="w-50" alt="">
                     </div>
 
                     <div
@@ -82,10 +88,11 @@
                         @if ($data->kategori)
                             @foreach ($data->kategori as $item)
                                 <div class="swiper-slide">
-                                    <img src="{{ $item->maskot ? $item->maskot : asset('assets/img/image.png') }}" width="60" height="60" alt=""
-                                        style="position: absolute; top: 0; left: 0;">
+                                    <img src="{{ $item->maskot ? $item->maskot : asset('assets/img/image.png') }}"
+                                        width="60" height="60" alt="" style="position: absolute; top: 0; left: 0;">
                                     <div class="testimonial-item">
-                                        <img src="{{ $item->logo ? $item->logo : asset('assets/img/image.png') }}" width="200" height="200" alt="">
+                                        <img src="{{ $item->logo ? $item->logo : asset('assets/img/image.png') }}"
+                                            width="200" height="200" alt="">
                                         <h3>{{ $item->judul_panjang ? $item->judul_panjang : '...' }}</h3>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>

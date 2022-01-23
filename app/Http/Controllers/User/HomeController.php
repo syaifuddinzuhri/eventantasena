@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Galeri;
+use App\Models\Jadwal;
 use App\Models\KategoriLomba;
 use App\Models\Kontak;
 use App\Models\Partner;
@@ -56,9 +57,11 @@ class HomeController extends Controller
     {
         $kontak = Kontak::first();
         $profil = Profil::first();
+        $jadwals = Jadwal::with('kategori_lomba')->latest()->get();
         $data = (object) [
             'kontak' => $kontak,
-            'profil' => $profil
+            'profil' => $profil,
+            'jadwals' => $jadwals
         ];
         return view('user.jadwal', compact('data'));
     }
